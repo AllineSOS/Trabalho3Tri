@@ -17,9 +17,6 @@ function buscaProfessor($codigo){
 		}
 	}
 
-
-
-
 	return $professor;
 }
 
@@ -31,24 +28,24 @@ print_r($p1);
 
 */
 
-
 	function listaProfessores(){
 		$professores=array();
 		//abrir arquivo
 		$dados = file("dados/professores.csv");
 		//percorrer
-		foreach ($dados as $linha) {
-			$colunas = explode(",", $linha);
-			$professor['siape'] = $colunas[0];
-			$professor['nome'] = $colunas[1];
-			$professor['email'] = $colunas[2];
-			$professor['foto'] = $colunas[3];
+		foreach ($dados as $posicao=> $linha) {
+			if($posicao!=0){
+				$colunas = explode(",", $linha);
+				$professor['siape'] = $colunas[0];
+				$professor['nome'] = $colunas[1];
+				$professor['email'] = $colunas[2];
+				$professor['foto'] = $colunas[3];
 
-			$professores[]= $professor;
+				$professores[]= $professor;
+			}
 		}
 		return $professores;
 	}
-$lista = listaProfessores();
-print_r($lista);
+
 
 ?>
